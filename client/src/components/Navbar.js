@@ -70,7 +70,7 @@ const Navbar = () => {
               onClick={() => toggleColorMode()}
             />
           </NavLink>
-          <Button as={ReactLink} to='/login' p={2} fontsize='sm' fontWeight={400} variant='link'>
+          <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
             Sign In
           </Button>
           <Button
