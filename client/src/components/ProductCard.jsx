@@ -18,7 +18,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { StarIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 
-const Rating = ({ rating, numReviews }) => {
+const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIconSize } = useState('14px');
   return (
     <Flex>
@@ -30,7 +30,7 @@ const Rating = ({ rating, numReviews }) => {
         <StarIcon size={iconSize} w='14px' color={rating >= 5 ? 'orange.500' : 'gray.200'} />
       </HStack>
       <Text fontSize='md' fontWeight='bold' ml='4px'>
-        {`${numReviews} ${numReviews === 1 ? 'Review' : 'Reviews'}`}
+        {`${numberOfReviews} ${numberOfReviews === 1 ? 'Review' : 'Reviews'}`}
       </Text>
     </Flex>
   );
@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
       rounded='lg'
       shadow='lg'
       position='relative'>
-      {product.isNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
+      {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
       <Image src={product.image} alt={product.name} roundedTop='lg' />
       <Box flex='1' maxH='5' alignItems='baseline'>
@@ -57,7 +57,7 @@ const ProductCard = ({ product }) => {
             Sold out
           </Badge>
         )}
-        {product.isNew && (
+        {product.productIsNew && (
           <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
             New
           </Badge>
@@ -70,13 +70,13 @@ const ProductCard = ({ product }) => {
           </Box>
         </Link>
       </Flex>
-      <Rating rating={product.rating} numReviews={product.numReviews} />
+      <Rating rating={product.rating} numberOfReviews={product.numberOfReviews} />
       <Flex justify='space-between'>
         <Box fontSize='2xl' color={useColorModeValue('gray.800', 'white')}>
           <Box as='span' fontSize='lg' color='gray.600'>
             $
           </Box>
-          {product.price.toFixed(2)}
+          {Number(product.price).toFixed(2)}
         </Box>
         <Tooltip label='Add to cart' bg='white' placement='top' color='gray.800' fontSize='1.2em'>
           <Button varian='ghost' display='flex' disabled={product.stock <= 0}>
