@@ -27,7 +27,7 @@ const Footer = () => (
           <Flex alignItems='center'>
             <Icon as={GiBookshelf} h={10} w={10} color='orange.400' />
             <Text fontSize='2xl' fontWeight='extrabold'>
-              Tech Lines
+              eBookStand
             </Text>
           </Flex>
           <Text color='muted'>We love books.</Text>

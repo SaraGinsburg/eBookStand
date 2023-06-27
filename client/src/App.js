@@ -6,6 +6,7 @@ import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
 import LandingScreen from './screens/LandingScreen.jsx';
 import Footer from './components/Footer';
+import LoginScreen from './screens/LoginScreen';
 function App() {
   return (
     <ChakraProvider>
@@ -17,6 +18,7 @@ function App() {
             <Route path='/products' element={<ProductsScreen />}></Route>
             <Route path='/cart' element={<CartScreen />}></Route>
             <Route path='/product/:id' element={<ProductScreen />}></Route>
+            <Route path='/login' element={<LoginScreen />}></Route>
           </Routes>
         </main>
         <Footer />
