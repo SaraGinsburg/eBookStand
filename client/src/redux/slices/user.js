@@ -19,9 +19,9 @@ export const userSlice = createSlice({
       state.loading = false;
     },
     userLogout: (state) => {
+      state.loading = false;
       state.userInfo = null;
       state.error = null;
-      state.loading = false;
     },
     setError: (state, { payload }) => {
       state.error = payload;
