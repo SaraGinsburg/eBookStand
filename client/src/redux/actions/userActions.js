@@ -49,7 +49,6 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 export const logout = () => (dispatch) => {
-  dispatch(resetUpdate());
   localStorage.removeItem('userInfo');
   dispatch(userLogout());
 };
