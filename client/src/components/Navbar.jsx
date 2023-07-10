@@ -27,6 +27,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { GiBookshelf } from 'react-icons/gi';
 import { FiShoppingCart } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 const ShoppingCartIcon = () => {
   const cartInfo = useSelector((state) => state.cart);
@@ -67,10 +68,12 @@ const Navbar = () => {
   const { userInfo } = user;
   const dispatch = useDispatch();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch(logout());
     toast({ description: 'You have been logged out.', status: 'success', isClosable: true });
+    navigate('/products');
   };
 
   return (
