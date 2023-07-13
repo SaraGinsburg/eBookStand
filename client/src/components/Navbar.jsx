@@ -22,7 +22,7 @@ import {
   MenuDivider,
 } from '@chakra-ui/react';
 import { CgProfile } from 'react-icons/cg';
-import { MdLocalShipping, MdLogout } from 'react-icons/md';
+import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { GiBookshelf } from 'react-icons/gi';
@@ -133,6 +133,15 @@ const Navbar = () => {
                     <MdLocalShipping />
                     <Text ml='2'>Your Orders</Text>
                   </MenuItem>
+                  {userInfo.isAdmin === 'true' && (
+                    <>
+                      <MenuDivider />
+                      <MenuItem as={ReactLink} to={'/admin-console'}>
+                        <MdOutlineAdminPanelSettings />
+                        <Text ml='2'>Admin Console</Text>
+                      </MenuItem>
+                    </>
+                  )}
                   <MenuDivider />
                   <MenuItem onClick={logoutHandler}>
                     <MdLogout />
