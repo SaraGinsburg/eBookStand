@@ -183,7 +183,37 @@ export const updateProduct =
       );
     }
   };
-// remove a product
+
+// delete product
+export const deleteProduct = (id) => async (dispatch, getState) => {
+  const {
+    user: { userInfo },
+  } = getState();
+
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+    const { data } = await axios.delete(`api/products/${id}`, config);
+    dispatch(setProducts(data));
+    dispatch(setProductUpdateFlag());
+    dispatch(resetError());
+  } catch (error) {
+    dispatch(
+      setError(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+          ? error.message
+          : 'Product could not be removed.'
+      )
+    );
+  }
+};
+
 // upload a  product
 export const resetErrorAndRemoval = () => async (dispatch) => {
   dispatch(resetError());
