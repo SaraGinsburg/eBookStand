@@ -9,6 +9,7 @@ import {
   orderDelete,
   setDeliveredFlag,
 } from '../slices/admin';
+import { setProducts, setProductUpdateFlag } from '../slices/products';
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
@@ -148,6 +149,42 @@ export const getAllOrders = () => async (dispatch, getState) => {
   }
 };
 
+// update a product
+export const updateProduct =
+  (id, brand, name, category, stock, price, productIsNew, description, image) => async (dispatch, getState) => {
+    const {
+      user: { userInfo },
+    } = getState();
+
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+          'Content-Type': 'application/json',
+        },
+      };
+
+      const { data } = await axios.put(
+        'api/products/',
+        { brand, name, category, stock, price, productIsNew, description, image, id },
+        config
+      );
+      dispatch(setProducts(data));
+      dispatch(setProductUpdateFlag());
+    } catch (error) {
+      dispatch(
+        setError(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+            ? error.message
+            : 'Product could not be updated.'
+        )
+      );
+    }
+  };
+// remove a product
+// upload a  product
 export const resetErrorAndRemoval = () => async (dispatch) => {
   dispatch(resetError());
 };

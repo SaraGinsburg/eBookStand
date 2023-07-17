@@ -6,7 +6,6 @@ export const initialState = {
   orders: null,
   userRemoval: false,
   orderRemoval: false,
-
   deliveredFlag: true,
 };
 
