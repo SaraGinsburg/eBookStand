@@ -215,6 +215,35 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 };
 
 // upload a  product
+export const uploadProduct = (newProduct) => async (dispatch, getState) => {
+  const {
+    user: { userInfo },
+  } = getState();
+
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const { data } = await axios.post('api/products/', newProduct, config);
+    dispatch(setProducts(data));
+    dispatch(setProductUpdateFlag());
+  } catch (error) {
+    dispatch(
+      setError(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+          ? error.message
+          : 'Product could not be uploaded.'
+      )
+    );
+  }
+};
+
 export const resetErrorAndRemoval = () => async (dispatch) => {
   dispatch(resetError());
 };
