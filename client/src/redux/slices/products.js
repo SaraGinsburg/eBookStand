@@ -39,6 +39,7 @@ export const productsSlice = createSlice({
     resetError: (state) => {
       state.error = null;
       state.reviewSent = false;
+      state.productUpdate = false;
     },
     setProductUpdateFlag: (state) => {
       state.productUpdate = true;
