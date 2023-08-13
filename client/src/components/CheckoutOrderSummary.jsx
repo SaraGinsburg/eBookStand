@@ -9,7 +9,6 @@ import {
   Text,
   useColorModeValue as mode,
   useToast,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as ReactLink, useNavigate } from 'react-router-dom';
@@ -19,12 +18,8 @@ import { useState, useEffect, useCallback } from 'react';
 import CheckoutItem from './CheckoutItem';
 import PayPalButton from './PayPalButton';
 import { resetCart } from '../redux/actions/cartActions.js';
-import PaymentErrorModal from './PaymentErrorModal.jsx';
-import PaymentSuccessModal from './PaymentSuccessModal.jsx';
 
 const CheckoutOrderSummary = () => {
-  const { onOpen: onErrorOpen, onClose: onErrorClose, isOpen: isErrorOpen } = useDisclosure();
-  const { onOpen: onSuccessOpen, onClose: onSuccessClose, isOpen: isSuccessOpen } = useDisclosure();
   const colorMode = mode('gray.600', 'gray.400');
   const cartItems = useSelector((state) => state.cart);
   const { cart, subtotal, expressShipping } = cartItems;
@@ -56,7 +51,6 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
-    onSuccessOpen();
     dispatch(
       createOrder({
         orderItems: cart,
@@ -70,11 +64,17 @@ const CheckoutOrderSummary = () => {
     );
     dispatch(resetOrder());
     dispatch(resetCart());
-    //openSuccess()
+    navigate('/order-success');
   };
 
   const onPaymentError = () => {
-    onErrorOpen();
+    toast({
+      description:
+        'Something went wrong during the payment process. Please try again or make sure that your PayPal account balance is enough for this purchase.',
+      status: 'error',
+      duration: '60000',
+      isClosable: true,
+    });
   };
 
   return (
@@ -146,8 +146,6 @@ const CheckoutOrderSummary = () => {
           continue shopping
         </Link>
       </Flex>
-      <PaymentErrorModal onClose={onErrorClose} onOpen={onErrorOpen} isOpen={isErrorOpen} />
-      <PaymentSuccessModal onClose={onSuccessClose} onOpen={onSuccessOpen} isOpen={isSuccessOpen} />
     </Stack>
   );
 };

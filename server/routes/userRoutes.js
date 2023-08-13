@@ -27,6 +27,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401).send('Invalid email or password.');
+    throw new Error('User not found.');
   }
 });
 
