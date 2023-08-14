@@ -39,7 +39,7 @@ const CartScreen = () => {
           <AlertTitle>Your cart is empty!</AlertTitle>
           <AlertDescription>
             <Link as={ReactLink} to='/products'>
-              Click here to see our products.
+              Click here to see our books.
             </Link>
           </AlertDescription>
         </Alert>

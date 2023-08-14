@@ -67,7 +67,7 @@ const AddNewProduct = () => {
       <Td>
         <Text fontSize='sm'>Stock</Text>
         <Input size='sm' value={stock} onChange={(e) => setStock(e.target.value)} />
-        <Text fontSize='sm'>New badge shown on product card</Text>
+        <Text fontSize='sm'>New badge shown on book card</Text>
         <FormControl display='flex' alignItems='center'>
           <FormLabel htmlFor='productIsNewFlag' mb='0' fontSize='sm'>
             Enable
@@ -90,7 +90,7 @@ const AddNewProduct = () => {
               createNewProduct();
             }}>
             <MdDriveFolderUpload />
-            <Text ml='2'>Save Product</Text>
+            <Text ml='2'>Save Item</Text>
           </Button>
         </VStack>
       </Td>

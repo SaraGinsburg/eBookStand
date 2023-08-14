@@ -21,7 +21,7 @@ const AdminConsoleScreen = () => {
           <Tabs size='md' variant='enclosed'>
             <TabList>
               <Tab>Users</Tab>
-              <Tab>Products</Tab>
+              <Tab>Books</Tab>
               <Tab>Reviews</Tab>
               <Tab>Orders</Tab>
             </TabList>

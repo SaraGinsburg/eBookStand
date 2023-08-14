@@ -26,7 +26,7 @@ const OrderSuccessScreen = () => {
         height='auto'>
         <AlertIcon boxSize='55px' />
         <AlertTitle pt='8px' fontSize='xl'>
-          Payment Successful!
+          B Payment Successful!
         </AlertTitle>
 
         <Stack mt='20px' minW='200px'>
@@ -34,7 +34,7 @@ const OrderSuccessScreen = () => {
             Your Order
           </Button>
           <Button colorScheme='teal' variant='outline' as={ReactLink} to='/products'>
-            Products
+            Items
           </Button>
           <Button colorScheme='teal' variant='outline' onClick={logoutHandler}>
             Logout

@@ -208,7 +208,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Product could not be removed.'
+          : 'Item could not be removed.'
       )
     );
   }
@@ -238,7 +238,7 @@ export const uploadProduct = (newProduct) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : 'Product could not be uploaded.'
+          : 'Item could not be uploaded.'
       )
     );
   }

@@ -93,7 +93,7 @@ const ProductTableItem = ({ product }) => {
           <VStack>
             <Button colorScheme='red' w='160px' variant='outline' onClick={openDeleteConfirmBox}>
               <DeleteIcon mr='5px' />
-              Remove Product
+              Remove Book
             </Button>
             <Button colorScheme='orange' w='160px' variant='outline' onClick={onSaveProduct}>
               <MdOutlineDataSaverOn style={{ marginRight: '5px' }} />
