@@ -44,7 +44,7 @@ const ShoppingCartIcon = () => {
 };
 
 const links = [
-  { linkName: 'Products', path: '/products' },
+  { linkName: 'Books', path: '/products' },
   { linkName: <ShoppingCartIcon />, path: '/cart' },
 ];
 
