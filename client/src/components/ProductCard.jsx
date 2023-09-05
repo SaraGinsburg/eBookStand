@@ -70,7 +70,20 @@ const ProductCard = ({ product }) => {
       position='relative'>
       {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
       {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
-      <Image src={product.image} alt={product.name} roundedTop='lg' />
+      {/* <Image src={product.image} alt={product.name} roundedTop='lg' boxSize='100%' objectFit='cover' /> */}
+      <Box width='100%' paddingTop='100%' position='relative'>
+        <Image
+          src={product.image}
+          alt={product.name}
+          roundedTop='lg'
+          position='absolute'
+          top='0'
+          left='0'
+          width='100%'
+          height='100%'
+          objectFit='contain'
+        />
+      </Box>
       <Box flex='1' maxH='5' alignItems='baseline'>
         {product.stock <= 0 && (
           <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='red'>
